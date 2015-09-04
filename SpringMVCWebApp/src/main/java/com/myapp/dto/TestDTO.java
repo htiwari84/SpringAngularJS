@@ -11,18 +11,18 @@ import javax.persistence.Table;
 
 //@XmlRootElement(name = "TestDTO")
 @Entity
-@Table(name="test")
+@Table(name = "test")
 public class TestDTO implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6947895310799525012L;
-	//@XmlElement
-	@Id 
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	// @XmlElement
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	//@XmlElement
+	// @XmlElement
 	@Column(name = "content")
 	private String content;
 
@@ -50,6 +50,5 @@ public class TestDTO implements Serializable {
 		this.id = id;
 		this.content = content;
 	}
-
 
 }

@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
-<html>
+<!doctype html>
+<html data-ng-app>
 	<head>
-		<meta charset="utf-8">
-		<title>Welcome</title>
-	</head> 
+		<title>Test </title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    	<script src="myapp.js"></script>
+	</head>
+
 	<body>
-		<c:url value="/showMessage.html" var="messageUrl" />
-		<a href="${messageUrl}">Click to enter</a>
+		<div data-ng-controller="TestJSController">
+			<p>The ID is {{test.id}}</p>
+			<p>The content is {{test.content}}</p>
+		</div>
 	</body>
 </html>

@@ -1,13 +1,11 @@
 package com.myapp.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myapp.dao.TestDao;
@@ -20,25 +18,29 @@ public class MyAppController {
 	@Autowired
 	public TestDao testdao;
 
-	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
-	public String helloWorld() {
+	@RequestMapping(value = "/save", method = RequestMethod.GET)
+	public String save(@RequestParam(value="name", defaultValue="test") String name) {
 		TestDTO dto = new TestDTO();
-		dto.setContent("himanshu");
+		dto.setContent(name);
 		testdao.saveObject(dto);
 		return "done";
 	}
 
-	@RequestMapping(value = "/welcome1", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/welcome1", method = RequestMethod.GET)
 	public ResponseEntity<TestDTO> helloWorld1() {
 		return new ResponseEntity<TestDTO>(new TestDTO(1, "himanshu"), HttpStatus.OK);
 
 	}
-
-	@RequestMapping(value = "/welcome4", method = RequestMethod.GET)
-	public List<TestDTO> helloWorld4() {
-		List<TestDTO> list = new ArrayList<TestDTO>();
-		list.add(new TestDTO(1, "himanshu"));
-		list.add(new TestDTO(2, "himanshu11"));
-		return list;
+*/
+	@RequestMapping(value = "/getAllRecord", method = RequestMethod.GET)
+	public List<TestDTO> getAllRecord() {
+		return testdao.getAllList();
 	}
+	
+	
+	@RequestMapping(value = "/getRecordById", method = RequestMethod.GET)
+	public TestDTO getRecordById(@RequestParam(value="id", defaultValue="1") long id) {
+		return testdao.getRecordById(id);
+	}
+	
 }

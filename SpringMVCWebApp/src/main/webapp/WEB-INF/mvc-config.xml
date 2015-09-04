@@ -13,6 +13,14 @@
 	<!-- Scan All annotation -->
 	<mvc:annotation-driven />
 
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/view/" />
+		<property name="suffix" value=".html" />
+	</bean>
+
 
 	<!-- Data Source Configuration -->
 	<bean id="dataSource"
@@ -49,5 +57,8 @@
 
 	<!-- Support To @Transaction aanotation -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+
 
 </beans>
